@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banglalink Horizon Demo</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #f2f2f4; }
+  * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+</style>
+</head>
+<body>
+
+<div style="position: relative; width: 430px; min-height: 2620px; margin: 0 auto; background-image: url('mockup2.png'); background-repeat: no-repeat; background-position: top center; background-size: 430px auto; overflow: hidden;">
+
+  <!-- ============ HORIZON_ENTRY_1 ============ -->
+  <!-- First Horizon story-rail entry point. Sits in the blank gap between the
+       Banglalink header and the first banner. Absolutely positioned over the
+       static PNG shell. Do not add other entry points here. -->
+  <div id="HORIZON_ENTRY_1" style="position: absolute; top: 88px; left: 0; right: 0; padding: 0 16px; box-sizing: border-box; z-index: 2;">
+    <div data-horizon-ep="#291731" data-horizon-ep-skeleton="cs"></div>
+  </div>
+  <!-- ========== end HORIZON_ENTRY_1 ========== -->
+
+</div>
+
+<script>
+  // Load the Horizon embed script exactly once.
+  (function () {
+    var REF = "69359e05b62bd32a6d2ec964";
+    if (document.querySelector('script[data-horizon-ref="' + REF + '"]')) return;
+    var s = document.createElement("script");
+    s.src = "https://play.horizonexp.com/embed.js";
+    s.setAttribute("data-horizon-ref", REF);
+    document.body.appendChild(s);
+  })();
+</script>
+
+</body>
+</html>
