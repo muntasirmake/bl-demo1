@@ -1,48 +1,32 @@
-# Banglalink × Horizon — bKash Deal Room entry point
+# Banglalink · Horizon Entry Point
 
-A static mobile-web prototype. The Banglalink screen is a fixed static
-background (the "empty" demo image); a single **Horizon** entry point
-(`HORIZON_ENTRY_1`, code `#377585`) is overlaid on the circular story-rail
-position under **bKash Deal Room** and is fully interactive.
+Static prototype: the empty Banglalink app screen (`bl-empty.png`) as a fixed 430px
+mobile canvas, with one interactive Horizon circular-story entry point
+(`HORIZON_ENTRY_1`) overlaid directly beneath the **bKash Deal Room** section title.
 
-`index.html` is completely self-contained (runtime + background image are
-inlined). The only external dependency is the Horizon embed script, loaded
-at runtime from `https://play.horizonexp.com/embed.js` — this is intentional
-so it hydrates once your domain is whitelisted.
+No build step — plain static HTML. Vercel serves it as-is.
+
+## Files
+- `index.html` — the page (background + Horizon overlay + embed script)
+- `bl-empty.png` — the app-shell background image
 
 ## Deploy to Vercel
 
-### Option A — Vercel dashboard (drag & drop)
-1. Push this folder to a GitHub repo (or use the Vercel "deploy a folder" flow).
-2. In Vercel, **New Project → Import** the repo.
-3. Framework preset: **Other**. No build command. Output/root: this folder.
-4. Deploy. You get a live URL like `https://your-project.vercel.app`.
+**Option A — GitHub + Vercel dashboard**
+1. Create a new GitHub repo and push the contents of this `deploy/` folder to its root.
+2. In Vercel: **Add New → Project → Import** the repo.
+3. Framework Preset: **Other**. Build Command: *(leave empty)*. Output Directory: *(leave empty / `.`)*.
+4. Deploy. Copy the resulting `*.vercel.app` domain.
 
-### Option B — Vercel CLI
+**Option B — Vercel CLI**
 ```bash
-npm i -g vercel
-cd export
-vercel --prod
+cd deploy
+npx vercel        # preview deploy
+npx vercel --prod # production deploy
 ```
 
-### Option C — GitHub Pages
-Push `index.html` to a repo and enable Pages on the branch/root.
-
-## After deploy — whitelist the domain
-1. Copy your live domain (e.g. `your-project.vercel.app`).
-2. In the **Horizon Console**, add that domain to the allowed/whitelist list
-   for reference `69359e05b62bd32a6d2ec964`.
-3. Reload the live page — the bKash Deal Room circular video rail will
-   hydrate in place.
-
-> Until the domain is whitelisted you'll see a console message
-> `License key is null - access denied`. That's expected and resolves once
-> the domain is approved.
-
-## The entry-point snippet (already wired in)
-```html
-<div data-horizon-ep="#377585" data-horizon-ep-skeleton="cs"></div>
-<script src="https://play.horizonexp.com/embed.js"
-        data-horizon-ref="69359e05b62bd32a6d2ec964"></script>
-```
-The embed script is guaranteed to load only once.
+## Whitelist the domain in Horizon Console
+After the first deploy, add your live domain (e.g. `your-app.vercel.app`, and any
+custom domain) to the allowed-origins / whitelist for ref `69359e05b62bd32a6d2ec964`
+in Horizon Console. Until the domain is whitelisted, `HORIZON_ENTRY_1` renders its
+container but the circular video rail stays empty — this is expected.
