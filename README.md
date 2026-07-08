@@ -1,14 +1,19 @@
 # Banglalink · Horizon Entry Point
 
-Static prototype: the empty Banglalink app screen (`bl-empty.png`) as a fixed 430px
-mobile canvas, with one interactive Horizon circular-story entry point
-(`HORIZON_ENTRY_1`) overlaid directly beneath the **bKash Deal Room** section title.
+Single full-page static Banglalink PNG (`bl-empty.png`) as a fixed 390px mobile canvas,
+centered on desktop, with three interactive Horizon entry points overlaid onto the
+reserved blank rails. The PNG is the only visible app shell and is not sliced or rebuilt;
+the only interactive parts are the embeds.
 
-No build step — plain static HTML. Vercel serves it as-is.
+- `HORIZON_ENTRY_1` — under **bKash Deal Room** (ep `#377585`, `cs`)
+- `HORIZON_ENTRY_2` — under **Daraz Discount Festival** (ep `#985860`, `rs`)
+- `HORIZON_ENTRY_3` — under **Samsung Stories** (ep `#143783`, `b4`)
+
+Single embed script loads once. No build step — plain static HTML. Vercel serves it as-is.
 
 ## Files
-- `index.html` — the page (background + Horizon overlay + embed script)
-- `bl-empty.png` — the app-shell background image
+- `index.html` — the page (background + Horizon overlays + embed script)
+- `bl-empty.png` — the full-page app-shell background image
 
 ## Deploy to Vercel
 
